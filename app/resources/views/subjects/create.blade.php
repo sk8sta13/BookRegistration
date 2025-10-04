@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Edição de Autor')
+@section('title', 'Add novo Aassunto')
 
 @section('content_header')
-    <h1>Autores</h1>
+    <h1>Assuntos</h1>
 @stop
 
 @section('content')
@@ -11,12 +11,11 @@
         <div class="col-12">
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">Edição de Autor</h3>
+                    <h3 class="card-title">Cadastro de Assunto</h3>
                 </div>
 
-                <form method="post" action="/authors/{{ $author->id }}">
+                <form method="post" action="/subjects">
                     @csrf
-                    @method('PUT')
                     <div class="card-body">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -29,8 +28,8 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="name">Nome do Autor</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', $author->name) }}" placeholder="Nome do Autor">
+                            <label for="description">Assunto</label>
+                            <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description" value="{{ old('description') }}" placeholder="Assunto">
                         </div>
                     </div>
 

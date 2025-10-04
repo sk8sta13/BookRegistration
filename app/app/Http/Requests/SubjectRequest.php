@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class AuthorRequest extends FormRequest
+class SubjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,14 +26,10 @@ class AuthorRequest extends FormRequest
         $id = $this->route('id'); 
 
         return [
-            'name' => [
+            'description' => [
                 'required',
                 'string',
-                'max:255',
-                
-                Rule::unique('authors', 'name')
-                    ->ignore($id)
-                    ->where(fn ($query) => $query->whereNull('deleted_at')),
+                'max:20'
             ],
         ];
     }
@@ -42,10 +37,9 @@ class AuthorRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'O campo "Nome do Autor" é obrigatório.',
-            'name.string' => 'Digite um nome válido para o Autor.',
-            'name.max' => 'O Nome do Autor deve ter no máximo :max caracteres.',
-            'name.unique' => 'O Nome do Autor já existe.',
+            'description.required' => 'O campo "Assunto" é obrigatório.',
+            'description.string' => 'Digite um assunto válida.',
+            'description.max' => 'O assunto deve ter no máximo :max caracteres.',
         ];
     }
 }
