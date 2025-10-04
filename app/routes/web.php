@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\{BooksController,AuthorsController,SubjectsController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('books', BooksController::class);
+Route::resource('authors', AuthorsController::class);
+Route::resource('subjects', SubjectsController::class);
