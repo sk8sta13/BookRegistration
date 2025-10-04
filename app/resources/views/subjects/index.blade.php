@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Lista de Autores')
+@section('title', 'Lista de Assuntos')
 
 @section('content_header')
-    <h1>Autores</h1>
+    <h1>Assuntos</h1>
 @stop
 
 @section('content')
@@ -11,9 +11,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Lista de Autores</h3>
+                    <h3 class="card-title">Lista de Assuntos</h3>
                     <div class="card-tools">
-                        <form action="/authors" method="get" class="form-inline">
+                        <form action="/subjects" method="get" class="form-inline">
                             <div class="input-group input-group-sm" style="width: 300px;">
                                 <input type="text" name="table_search" class="form-control float-right" placeholder="Search" value="{{ request()->query('table_search') }}">
 
@@ -21,7 +21,7 @@
                                     <button type="submit" class="btn btn-default">
                                         <i class="fas fa-search"></i>
                                     </button>
-                                    <a class="btn btn-default" href="/authors/create">
+                                    <a class="btn btn-default" href="/subjects/create">
                                         <i class="fas fa-plus"></i>
                                     </a>
                                 </div>
@@ -55,29 +55,29 @@
                                 <thead>
                                     <tr>
                                         <th class="sorting sorting_asc" aria-controls="example1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Código</th>
-                                        <th class="sorting" aria-controls="example1" aria-label="Browser: activate to sort column ascending">Nome</th>
+                                        <th class="sorting" aria-controls="example1" aria-label="Browser: activate to sort column ascending">Assunto</th>
                                         <th class="sorting" aria-controls="example1" aria-label="Browser: activate to sort column ascending">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($authors as $author)
+                                    @foreach($subjects as $subject)
                                         <tr class="odd">
-                                            <td class="dtr-control sorting_1">#{{ $author->id }}</td>
-                                            <td>{{ $author->name }}</td>
+                                            <td class="dtr-control sorting_1">#{{ $subject->id }}</td>
+                                            <td>{{ $subject->description }}</td>
                                             <td>
                                                 <div class="input-group-append">
-                                                    <a class="btn btn-default btn-xs" href="/authors/{{ $author->id }}">
+                                                    <a class="btn btn-default btn-xs" href="/subjects/{{ $subject->id }}">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-                                                    <a class="btn btn-default btn-xs" href="/authors/{{ $author->id }}/edit">
+                                                    <a class="btn btn-default btn-xs" href="/subjects/{{ $subject->id }}/edit">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                     <button type="button" 
                                                         class="btn btn-default btn-xs" 
                                                         data-toggle="modal" 
                                                         data-target="#confirmDeleteModal" 
-                                                        data-route="/authors/{{ $author->id }}" 
-                                                        data-name="{{ $author->name }}">
+                                                        data-route="/subjects/{{ $subject->id }}" 
+                                                        data-name="{{ $subject->description }}">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>
@@ -88,7 +88,7 @@
                                 <tfoot>
                                     <tr>
                                         <th>Código</th>
-                                        <th>Nome</th>
+                                        <th>Assunto</th>
                                         <th>Ações</th>
                                     </tr>
                                 </tfoot>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-7">
-                            {{ $authors->links() }}
+                            {{ $subjects->links() }}
                         </div>
                     </div>
                 </div>

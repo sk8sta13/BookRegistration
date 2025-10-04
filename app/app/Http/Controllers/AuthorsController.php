@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Authors;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthorRequest;
 use App\Repositories\Contracts\AuthorRepositoryInterface;
-use Illuminate\Support\Facades\Auth;
 
 class AuthorsController extends Controller
 {
@@ -20,12 +18,13 @@ class AuthorsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $search = ($request->has('table_search')) ? $request->table_search : null;
-        $authors = $this->repository->search($search, 2);
+        $authors = $this->repository->search($search);
 
         return view('authors.index', compact('authors'));
     }

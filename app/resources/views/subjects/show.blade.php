@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Detalhes do Autor')
+@section('title', 'Detalhes do Assunto')
 
 @section('content_header')
-    <h1>Autores</h1>
+    <h1>Assuntos</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">Detalhes do Autor</h3>
+                    <h3 class="card-title">Detalhes do Assunto</h3>
                 </div>
 
                 <div class="card-body">
@@ -22,18 +22,18 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="name">Nome do Autor:&nbsp;</label>
-                        {{ $author->name }}
+                        <label for="name">Assunto:&nbsp;</label>
+                        {{ $subject->description }}
                     </div>
 
                     <div class="form-group">
                         <label for="name">Data da criação:&nbsp;</label>
-                        {{ $author->created_at->format('d/m/Y H:i:s') }}
+                        {{ $subject->created_at->format('d/m/Y H:i:s') }}
                     </div>
 
                     <div class="form-group">
                         <label for="name">Data da última atualização:&nbsp;</label>
-                        {{ $author->updated_at->format('d/m/Y H:i:s') }}
+                        {{ $subject->updated_at->format('d/m/Y H:i:s') }}
                     </div>
                 </div>
             </div>
