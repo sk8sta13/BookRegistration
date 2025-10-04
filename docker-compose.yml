@@ -1,0 +1,31 @@
+services:
+  br-database:
+    image: mysql:5.7
+    container_name: br-mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: 'bookesbookstore'
+      MYSQL_ROOT_PASSWORD: "101010"
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+  br-nginx:
+    image: nginx
+    container_name: br-nginx
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/log:/var/log/nginx
+      - ./app:/var/www/html/app
+    ports:
+      - 80:80
+    restart: always
+    depends_on:
+      - br-fpm
+  br-fpm:
+    build: ./docker/fpm
+    container_name: br-fpm
+    restart: always
+    volumes:
+      - ./docker/fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./app:/var/www/html/app
