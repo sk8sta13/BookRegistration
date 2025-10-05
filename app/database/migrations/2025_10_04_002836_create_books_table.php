@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('publisher', 40);
             $table->integer('edition');
             $table->string('publication_year', 4);
+            $table->decimal('price', 10, 2)->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

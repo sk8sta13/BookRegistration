@@ -7,6 +7,11 @@ use App\Repositories\Contracts\SubjectRepositoryInterface;
 
 class SubjectRepository implements SubjectRepositoryInterface
 {
+    public function pluck()
+    {
+        return Subjects::pluck('description', 'id');
+    }
+
     public function search(?string $term = null, int $perPage = 10)
     {
         $query = Subjects::query();

@@ -7,6 +7,11 @@ use App\Repositories\Contracts\AuthorRepositoryInterface;
 
 class AuthorRepository implements AuthorRepositoryInterface
 {
+    public function pluck()
+    {
+        return Authors::pluck('name', 'id');
+    }
+
     public function search(?string $term = null, int $perPage = 10)
     {
         $query = Authors::query();
