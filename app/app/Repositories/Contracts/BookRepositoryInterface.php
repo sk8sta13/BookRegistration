@@ -2,9 +2,8 @@
 
 namespace App\Repositories\Contracts;
 
-interface AuthorRepositoryInterface
+interface BookRepositoryInterface
 {
-    public function pluck();
     public function search(?string $term = null, int $perPage = 10);
     public function create(array $data);
     public function find(int $id);

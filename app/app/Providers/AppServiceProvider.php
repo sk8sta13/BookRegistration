@@ -7,8 +7,10 @@ use Illuminate\Pagination\Paginator;
 
 use App\Repositories\Contracts\AuthorRepositoryInterface;
 use App\Repositories\Contracts\SubjectRepositoryInterface;
+use App\Repositories\Contracts\BookRepositoryInterface;
 use App\Repositories\AuthorRepository;
 use App\Repositories\SubjectRepository;
+use App\Repositories\BookRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFour();
         $this->app->bind(AuthorRepositoryInterface::class, AuthorRepository::class);
         $this->app->bind(SubjectRepositoryInterface::class, SubjectRepository::class);
+        $this->app->bind(BookRepositoryInterface::class, BookRepository::class);
     }
 
     /**
